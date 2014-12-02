@@ -58,7 +58,7 @@ def input_students
     print "\nHow tall is #{name}?"
     print "\n> "
     height = gets.chomp
-    birthplace.length == 0 ? birthplace = "Someplace" : birthplace
+    birthplace.length == 0 ? height = "Someheight" : height
     #add the student to the hash 
     students << {:name => name, 
                  :cohort => cohort, 
