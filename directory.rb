@@ -39,6 +39,9 @@ def input_students
   print prompt
   name = gets.chomp
   while !name.empty? do 
+    # get cohort
+    print "\n> "
+    cohort = gets.chomp 
     # get hobbies
     print "What hobbies does #{name} have?"
     print "\n> "  
@@ -54,7 +57,7 @@ def input_students
 
     #add the student to the hash 
     students << {:name => name, 
-                 :cohort => :decemeber, 
+                 :cohort => cohort, 
                  :hobbies => hobbies, 
                  :birthplace => birthplace,
                  :height => height
