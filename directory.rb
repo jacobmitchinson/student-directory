@@ -1,7 +1,7 @@
 
 
 def header
-  "Some students in my cohort at Makers Academy" + "\n---------------"
+  "Some students in my cohort at Makers Academy".center(60) + "\n#{"-" * 60}\n"
 end
 
 def display(students)
@@ -30,21 +30,26 @@ end
 
 
 def input_students
-  print "\nPlease enter the names of the student(s)."
-  print "\nTo finish, just hit return twice.\n"
+  print "Please enter the names of the student(s).\n".center(60)
+  print "To finish, just hit return twice.\n".center(30)
   # create an empty array 
   students = []
   # get the first name
+  prompt = "> "
+  print prompt
   name = gets.chomp
   while !name.empty? do 
     # get hobbies
-    print "\nWhat hobbies does #{name} have?\n"
+    print "What hobbies does #{name} have?"
+    print "\n> "  
     hobbies = gets.chomp
     # get country of birth
-    print "\nWhere was #{name} born?\n"
+    print "Where was #{name} born?"
+    print "\n> "
     birthplace = gets.chomp
     # get height
-    print "\nHow tall is #{name}?\n"
+    print "\nHow tall is #{name}?"
+    print "\n> "
     height = gets.chomp
 
     #add the student to the hash 
