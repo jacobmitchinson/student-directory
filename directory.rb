@@ -5,9 +5,11 @@ def header
 end
 
 def display(students)
-  until students.empty? 
-    student = students.pop
-       
+  count = students.length 
+
+  until count == 0
+    student = students[count - 1]
+
     if student[:name].downcase.start_with?("a") && (student[:name].delete(' ').length. < 12)
       print "#{student[:name]}, (#{student[:cohort].capitalize}) cohort."
       print "\n#{student[:name]} likes #{student[:hobbies]}"
@@ -16,6 +18,8 @@ def display(students)
     else
       print "No students start with letter A and are less than 12 characters long."
     end
+
+    count -= 1
   end
 end
 
