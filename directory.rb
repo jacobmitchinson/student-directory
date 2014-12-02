@@ -5,11 +5,13 @@ def header
 end
 
 def display(students)
-  students.each_with_index do |student, index|
-    if student[:name].downcase.start_with?("a") && student[:name].delete(' ').length < 12 
-      print "\n#{index + 1}: #{student[:name]}, (#{student[:cohort].capitalize}) cohort"
+  until students.empty? 
+    student = students.pop
+    
+    if student[:name].downcase.start_with?("a") && (student[:name].delete(' ').length. < 12)
+      print "#{student[:name]}, (#{student[:cohort].capitalize}) cohort"
     else
-      print "No students start with an A are less than 12 characters long."
+      print "No students start with letter A and are less than 12 characters long."
     end
   end
 end
