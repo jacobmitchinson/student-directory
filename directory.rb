@@ -40,21 +40,25 @@ def input_students
   name = gets.chomp
   while !name.empty? do 
     # get cohort
+    print "What cohort does #{name} belong to?"
     print "\n> "
-    cohort = gets.chomp 
+    cohort = gets.chomp
+    cohort.length == 0 ? cohort = "December" : cohort
     # get hobbies
     print "What hobbies does #{name} have?"
     print "\n> "  
     hobbies = gets.chomp
+    hobbies.length == 0 ? hobbies = "I'm boring" : hobbies
     # get country of birth
     print "Where was #{name} born?"
     print "\n> "
     birthplace = gets.chomp
+    birthplace.length == 0 ? birthplace = "Someplace" : birthplace
     # get height
     print "\nHow tall is #{name}?"
     print "\n> "
     height = gets.chomp
-
+    birthplace.length == 0 ? birthplace = "Someplace" : birthplace
     #add the student to the hash 
     students << {:name => name, 
                  :cohort => cohort, 
