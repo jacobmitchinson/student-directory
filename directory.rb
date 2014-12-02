@@ -1,13 +1,13 @@
 # first we print the list of students
 
 
-students = ["Andy Newman", 
-            "Keiran Goodacre",
-            "Bebbs",
-            "Marcin Wal",
-            "Emily Sas",
-            "Marcus de Wilde",
-            "Matteo Manzo"
+students = [["Andy Newman", :december],
+            ["Keiran Goodacre", :december],
+            ["Bebbs", :december],
+            ["Marcin Wal", :december],
+            ["Emily Sas", :december],
+            ["Marcus de Wilde", :december],
+            ["Matteo Manzo", :december]
 ]
 
 def print_header
@@ -15,9 +15,9 @@ def print_header
   puts "---------------"
 end
 
-def print(names)
-  names.each do |name|
-    puts name
+def print(students)
+  students.each do |student|
+    puts "#{student[0]}, (#{student[1].capitalize}) cohort"
   end
 end
 
