@@ -1,13 +1,31 @@
-student_count = 7
 # first we print the list of students
-puts "Some students in my cohort at Makers Academy"
-puts "---------------"
-puts "Andy Newman"
-puts "Keiran Goodacre"
-puts "Bebbs"
-puts "Marcin Wal"
-puts "Emily Sas"
-puts "Marcus de Wilde"
-puts "Matteo Manzo"
-#finally we print the total
-print "Overall we have: #{student_count} great students."
+
+
+students = ["Andy Newman", 
+            "Keiran Goodacre",
+            "Bebbs",
+            "Marcin Wal",
+            "Emily Sas",
+            "Marcus de Wilde",
+            "Matteo Manzo"
+]
+
+def print_header
+  puts "Some students in my cohort at Makers Academy"
+  puts "---------------"
+end
+
+def print(names)
+  names.each do |name|
+    puts name
+  end
+end
+
+def print_footer(names)
+  puts "Overall we have: #{names.length} great students."
+end
+
+print_header
+print(students)
+print_footer(students)
+
