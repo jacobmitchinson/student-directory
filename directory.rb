@@ -7,9 +7,12 @@ end
 def display(students)
   until students.empty? 
     student = students.pop
-    
+       
     if student[:name].downcase.start_with?("a") && (student[:name].delete(' ').length. < 12)
-      print "#{student[:name]}, (#{student[:cohort].capitalize}) cohort"
+      print "#{student[:name]}, (#{student[:cohort].capitalize}) cohort."
+      print "\n#{student[:name]} likes #{student[:hobbies]}"
+      print "\n#{student[:name]} was born in #{student[:birthplace]}"
+      print "\n#{student[:name]} is #{student[:height]} tall"
     else
       print "No students start with letter A and are less than 12 characters long."
     end
@@ -30,8 +33,23 @@ def input_students
   # get the first name
   name = gets.chomp
   while !name.empty? do 
+    # get hobbies
+    print "\nWhat hobbies does #{name} have?\n"
+    hobbies = gets.chomp
+    # get country of birth
+    print "\nWhere was #{name} born?\n"
+    birthplace = gets.chomp
+    # get height
+    print "\nHow tall is #{name}?\n"
+    height = gets.chomp
+
     #add the student to the hash 
-    students << {:name => name, :cohort => :decemeber}
+    students << {:name => name, 
+                 :cohort => :decemeber, 
+                 :hobbies => hobbies, 
+                 :birthplace => birthplace,
+                 :height => height
+    }
     print "Now we have #{students.length} students.\n"
     # get another name from the user 
     name = gets.chomp
