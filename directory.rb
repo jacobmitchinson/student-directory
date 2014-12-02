@@ -1,24 +1,28 @@
 
 
-def print_header
-  puts "Some students in my cohort at Makers Academy"
-  puts "---------------"
+def header
+  "Some students in my cohort at Makers Academy" + "\n---------------"
 end
 
-def print(students)
-  students.each do |student|
-    puts "#{student[:name]}, (#{student[:cohort].capitalize}) cohort"
+def display(students)
+  students.each_with_index do |student, index|
+    if student[:name].downcase.start_with?("a") && student[:name].delete(' ').length < 12 
+      print "\n#{index + 1}: #{student[:name]}, (#{student[:cohort].capitalize}) cohort"
+    else
+      print "No students start with an A are less than 12 characters long."
+    end
   end
 end
 
-def print_footer(names)
-  puts "Overall we have: #{names.length} great students."
+
+def footer(students)
+  "\nOverall we have: #{students.length} great student(s).\n"
 end
 
 
 def input_students
-  puts "Please enter the names of the students."
-  puts "To finish, just hit return twice"
+  print "\nPlease enter the names of the student(s)."
+  print "\nTo finish, just hit return twice.\n"
   # create an empty array 
   students = []
   # get the first name
@@ -26,7 +30,7 @@ def input_students
   while !name.empty? do 
     #add the student to the hash 
     students << {:name => name, :cohort => :decemeber}
-    puts "Now we have #{students.length} students."
+    print "Now we have #{students.length} students.\n"
     # get another name from the user 
     name = gets.chomp
   end 
@@ -34,9 +38,9 @@ def input_students
   students
 end
 
+print header
 students = input_students
-print_header
-print(students)
-print_footer(students)
+display(students)
+print footer(students)
 
 
