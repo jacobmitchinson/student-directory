@@ -28,7 +28,6 @@ def footer(students)
   "\nOverall we have: #{students.length} great student(s).\n"
 end
 
-
 def input_students
   print "Please enter the names of the student(s).\n".center(60)
   print "To finish, just hit return twice.\n".center(30)
@@ -43,7 +42,7 @@ def input_students
     print "What cohort does #{name} belong to?"
     print "\n> "
     cohort = gets.chomp.to_sym
-    cohort.length == 0 ? cohort = :December : cohort
+    cohort.length == 0 ? cohort = :December : cohort # check 
     # get hobbies
     print "What hobbies does #{name} have?"
     print "\n> "  
@@ -55,24 +54,83 @@ def input_students
     birthplace = gets.chomp
     birthplace.length == 0 ? birthplace = :"Someplace" : birthplace
     # get height
-    print "\nHow tall is #{name}?"
+    print " How tall is #{name}?"
     print "\n> "
     height = gets.chomp
     birthplace.length == 0 ? height = :"Someheight" : height
+    
+    check_correct_inputs(name,cohort,hobbies,birthplace,height)
+
     #add the student to the hash 
-    students << {:name => name, 
-                 :cohort => cohort, 
-                 :hobbies => hobbies, 
-                 :birthplace => birthplace,
-                 :height => height
+    students << {:name => @name,
+                 :cohort => @cohort.to_sym,  
+                 :hobbies => @hobbies, 
+                 :birthplace => @birthplace,
+                 :height => @height
     }
-    print "Now we have #{students.length} students.\n"
+    print "Now we have #{students.length} students."
     # get another name from the user 
+    print "\nAdd another student? Alternatively, press enter to exit.\nName: "
     name = gets.chomp
   end 
   # return the array of students
   students
 end
+
+def check_correct_inputs(name,cohort,hobbies,birthplace,height)
+
+  @name = name
+  @cohort = cohort 
+  @hobbies = hobbies
+  @birthplace = birthplace 
+  @height = height 
+  
+  puts "Name: #{name}, Cohort: #{cohort}, Hobbies: #{hobbies}, Birthplace: #{birthplace}, Height: #{height}."
+  
+  puts "Everything correct? Type 'exit' if so or type 'name', 'cohort', 'hobbies', 'birthplace' or 'height' to 'change'."
+  
+  check = gets.chomp 
+
+  until check == "exit"
+    case check.downcase
+      when "name" 
+        print "Name: "
+        @name = gets.chomp
+        print "Anything else you would like change? "
+        check = gets.chomp 
+      when "cohort"
+        print "Cohort: " 
+        @cohort = gets.chomp
+        print "Anything else you would like change? "
+        check = gets.chomp 
+      when "hobbies"
+        print "Hobbies: " 
+        @hobbies = gets.chomp
+        print "Anything else you would like change? "
+        check = gets.chomp
+      when "birthplace"
+        print "Birthplace: " 
+        @birthplace = gets.chomp
+        print "Anything else you would like change? "
+        check = gets.chomp
+      when "height"
+        print "Height: " 
+        @height = gets.chomp
+        print "Anything else you would like change? "
+        check = gets.chomp
+      else
+        print "Sorry, I don't understand: "
+        check = gets.chomp
+      end
+  end
+  return @name, @cohort, @hobbies, @birthplace, @height
+end
+
+
+
+
+
+ 
 
 print header
 students = input_students
