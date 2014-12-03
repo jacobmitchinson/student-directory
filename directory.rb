@@ -1,4 +1,4 @@
-
+# need to refactor methods as they are becoming bloated 
 
 def header
   "Some students in my cohort at Makers Academy".center(60) + "\n#{"-" * 60}\n"
@@ -68,7 +68,10 @@ def input_students
                  :birthplace => @birthplace,
                  :height => @height
     }
-    print "Now we have #{students.length = 1 ? "student" : "students" }"
+
+    plural_check = students.length == 1 ? "student" : "students"
+
+    print "Now we have #{students.length} #{plural_check}."
     # get another name from the user 
     print "\nAdd another student? Alternatively, press enter to exit.\nName: "
     name = gets.chomp
