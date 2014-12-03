@@ -46,7 +46,7 @@ def input_students
     # get hobbies
     print "What hobbies does #{name} have?"
     print "\n> "  
-    hobbies = gets.chomp
+    hobbies = gets.delete("\n").delete("\r")
     hobbies.length == 0 ? hobbies = :"I'm boring" : hobbies
     # get country of birth
     print "Where was #{name} born?"
@@ -68,7 +68,7 @@ def input_students
                  :birthplace => @birthplace,
                  :height => @height
     }
-    print "Now we have #{students.length} students."
+    print "Now we have #{students.length = 1 ? "student" : "students" }"
     # get another name from the user 
     print "\nAdd another student? Alternatively, press enter to exit.\nName: "
     name = gets.chomp
