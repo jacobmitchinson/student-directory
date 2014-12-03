@@ -23,7 +23,6 @@ def display(students)
   end
 end
 
-
 def footer(students)
   "\nOverall we have: #{students.length} great student(s).\n"
 end
