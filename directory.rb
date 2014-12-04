@@ -24,27 +24,19 @@ def input_students
   # while the name is not empty, repeat this code
   while !name.empty? do    
     # add the student hash to the array
-    @students << {:name => name, :cohort => :november}    
+    add_student
     puts "Now we have #{@students.length} students"
     # get another name from the user
     name = gets.chomp
   end
 end
 
-def interative_menu
-  @students = []
-  loop do 
-    print_menu
-    process(gets.chomp)
-  end
-end
-
 def print_menu
-  # 1. print the menu and ask the user what to do 
   puts "1. Input the students"
   puts "2. Show the students"
-  puts "9. Exit" # 9 because we'll be adding more items
-  # 2. read the input and save it into a variable
+  puts "3. Save the students to a csv file"
+  puts "4. Load the students from a csv file"
+  puts "9. Exit"
 end
 
 def show_students
@@ -66,23 +58,43 @@ def save_students
   file.close
 end
 
+def add_student
+  @students << {:name => name, :cohort => :november}   
+end
+
+def load_students
+  file = File.open('students.csv', 'r')
+  file.readlines.each do |line|
+  name, cohort = line.chomp.split(',')
+    @students << {:name => name, :cohort => cohort.to_sym}
+  end
+  file.close
+end
+
 def process(selection)
   case selection
     when "1"
-    # input the students
       students = input_students
     when "2"
-      # show the students
+      show_students
     when "3"
       save_students
-    show_students
+    when "4"
+      load_students 
     when "9"
-      exit # this will cause the program to terminate
+      exit 
     else
       puts "I don't know what you meant, try again."
   end
 end
 
+def interative_menu
+  @students = []
+  loop do 
+    print_menu
+    process(gets.chomp)
+  end
+end
 
 interative_menu
 
