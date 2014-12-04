@@ -20,14 +20,14 @@ def input_students
   puts "To finish, just hit return twice"
   @students = []
   # get the first name
-  name = gets.chomp
+  name = STDIN.gets.chomp
   # while the name is not empty, repeat this code
   while !name.empty? do    
     # add the student hash to the array
     add_student
     puts "Now we have #{@students.length} students"
     # get another name from the user
-    name = gets.chomp
+    name = STDIN.gets.chomp
   end
 end
 
@@ -62,8 +62,20 @@ def add_student
   @students << {:name => name, :cohort => :november}   
 end
 
-def load_students
-  file = File.open('students.csv', 'r')
+def try_load_students
+  filename = ARGV.first
+  return if filename.nil?
+  if File.exists?(filename)
+    load_students(filename)
+    puts "Loaded #{@students.length} from #{filename}"
+  else
+    puts "Sorry, #{filename} doesn't exist."
+    exit
+  end
+end
+
+def load_students(filename = "students.csv")
+  file = File.open(filename, 'r')
   file.readlines.each do |line|
   name, cohort = line.chomp.split(',')
     @students << {:name => name, :cohort => cohort.to_sym}
@@ -92,7 +104,7 @@ def interative_menu
   @students = []
   loop do 
     print_menu
-    process(gets.chomp)
+    process(STDIN.gets.chomp)
   end
 end
 
