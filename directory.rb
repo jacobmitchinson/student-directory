@@ -1,3 +1,6 @@
+# when adding students completely overwrites file and removes students. this needs to be fixed. 
+
+
 @students = []
 
 def print_header
@@ -20,15 +23,23 @@ def input_students
   puts "To finish, just hit return twice"
   @students = []
   # get the first name
-  name = STDIN.gets.chomp
+  @name = STDIN.gets.chomp
   # while the name is not empty, repeat this code
-  while !name.empty? do    
+  loop_and_add
+end
+
+def loop_and_add
+  while !@name.empty? do    
     # add the student hash to the array
-    add_student
+    add_student_to_array
     puts "Now we have #{@students.length} students"
     # get another name from the user
-    name = STDIN.gets.chomp
+    @name = STDIN.gets.chomp
   end
+end
+
+def add_student_to_array
+  @students << {:name => @name, :cohort => :november}   
 end
 
 def print_menu
@@ -56,10 +67,6 @@ def save_students
     file.puts csv_line
   end
   file.close
-end
-
-def add_student
-  @students << {:name => name, :cohort => :november}   
 end
 
 def try_load_students
