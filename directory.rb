@@ -25,21 +25,17 @@ def input_students
   # get the first name
   @name = STDIN.gets.chomp
   # while the name is not empty, repeat this code
-  loop_and_add
+  add_students
 end
 
-def loop_and_add
+def add_students
   while !@name.empty? do    
     # add the student hash to the array
-    add_student_to_array
+    @students << {:name => @name, :cohort => :november} 
     puts "Now we have #{@students.length} students"
     # get another name from the user
     @name = STDIN.gets.chomp
   end
-end
-
-def add_student_to_array
-  @students << {:name => @name, :cohort => :november}   
 end
 
 def print_menu
