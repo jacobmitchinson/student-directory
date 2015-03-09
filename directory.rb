@@ -1,6 +1,3 @@
-# when adding students completely overwrites file and removes students. this needs to be fixed. 
-
-
 @students = []
 
 def print_header
