@@ -1,10 +1,8 @@
-STUDENT DIRECTORY
+### Introduction 
 
-=================
+This was a Makers Academy pre-course challenge to create a command line interface to access students at Makers Academy. 
 
-The student directory script allows you to manage 
-the list of students enrolled on the course at 
-Makers Academy. 
+
 
 How to use
 ----------
